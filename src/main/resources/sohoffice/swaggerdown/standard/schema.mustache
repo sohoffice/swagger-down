@@ -1,0 +1,15 @@
+{{#notEmpty}}##### Schema
+{{#schema.description}}
+
+{{.}}{{/schema.description}}
+
+| Key | Type | Description |
+| --- | ---- | ----------- |
+{{#items}}| {{key}} | {{type}} | {{#singleLine}}{{description}}{{/singleLine}} |
+{{/items}}
+{{/notEmpty}}
+{{^notEmpty}}
+Empty
+{{/notEmpty}}
+
+{{> jsonExample}}

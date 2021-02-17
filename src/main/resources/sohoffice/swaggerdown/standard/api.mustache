@@ -1,0 +1,40 @@
+## {{method}} {{path}}
+
+{{op.summary}}
+
+{{#op.description}}### Description 
+
+{{#trim}}{{op.description}}{{/trim}}
+
+{{/op.description}}
+
+{{#hasParameters}}### Parameters
+
+| Name   | In  | Description |
+| ------ | --- | ----------- |
+{{#parameters}}| {{name}} | {{in}} | {{#singleLine}}{{description}}{{/singleLine}} |
+{{/parameters}}
+{{/hasParameters}}
+
+{{#requestBody}}
+### Request Body: {{contentType}}
+
+{{#schema}}
+{{> schema}}
+{{/schema}}
+
+{{> jsonExample}}
+{{/requestBody}}
+
+{{#responses}}
+### Response: {{status}} {{contentType}}
+
+{{description}}
+
+{{#schema}}
+{{> schema}}
+{{/schema}}
+
+{{> jsonExample}}
+{{/responses}}
+

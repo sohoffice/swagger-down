@@ -1,0 +1,26 @@
+# API Documentation
+
+{{#api.info}}#### Info
+
+{{#title}}{{#trim}}{{title}}{{/trim}}
+
+{{/title}}
+{{#description}}{{#trim}}{{api.info.description}}{{/trim}}
+
+{{/description}}
+| Name | Value |
+| ---- | ----- |
+{{#termsOfService}}| Terms of service | {{termsOfService}} |
+{{/termsOfService}}{{#contact}}| Contact | {{name}} {{email}} {{url}} |
+{{/contact}}{{#license}}| License | {{name}} {{url}} |
+{{/license}}{{#version}}| Version | {{version}} |
+{{/version}}{{/api.info}}
+
+
+#### Servers
+
+| Description | URL |
+| ----------- | --- |
+{{#api.servers}}
+| {{description}} | {{url}} |
+{{/api.servers}}
