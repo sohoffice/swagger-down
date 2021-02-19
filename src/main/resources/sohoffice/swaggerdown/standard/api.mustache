@@ -1,4 +1,7 @@
-## {{method}} {{path}}
+{{method}} {{path}}
+{{#dashRepeater}}
+{{method}} {{path}}{{/dashRepeater}}
+
 
 {{op.summary}}
 
@@ -6,9 +9,7 @@
 
 {{#trim}}{{op.description}}{{/trim}}
 
-{{/op.description}}
-
-{{#hasParameters}}### Parameters
+{{/op.description}}{{#hasParameters}}### Parameters
 
 | Name   | In  | Description |
 | ------ | --- | ----------- |
@@ -25,16 +26,13 @@
 
 {{> jsonExample}}
 {{/requestBody}}
-
 {{#responses}}
 ### Response: {{status}} {{contentType}}
 
-{{description}}
-
-{{#schema}}
-{{> schema}}
+{{#trim}}{{description}}
+{{/trim}}
+{{#schema}}{{> schema}}
 {{/schema}}
 
 {{> jsonExample}}
 {{/responses}}
-

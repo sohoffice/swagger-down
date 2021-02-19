@@ -40,7 +40,8 @@ class App {
       "api" to SimplePreparer(),
       "flatten" to ApiFlattenPreparer(),
       "singleLine" to NewlineToBrPreparer(),
-      "trimString" to TrimPreparer()
+      "trimString" to TrimPreparer(),
+      "dashRepeater" to RepeaterPreparer("-")
   )
 
   fun parse(f: File): OpenAPI? {

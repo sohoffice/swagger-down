@@ -1,8 +1,7 @@
 {{#notEmpty}}##### Schema
-{{#schema.description}}
 
-{{.}}{{/schema.description}}
-
+{{#trim}}{{schema.description}}
+{{/trim}}
 | Key | Type | Description |
 | --- | ---- | ----------- |
 {{#items}}| {{key}} | {{type}} | {{#singleLine}}{{description}}{{/singleLine}} |
@@ -11,5 +10,4 @@
 {{^notEmpty}}
 Empty schema
 {{/notEmpty}}
-
 {{> jsonExample}}
