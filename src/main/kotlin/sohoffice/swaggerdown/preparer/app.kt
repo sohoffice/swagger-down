@@ -39,7 +39,11 @@ fun flattenContent(c: Content?): List<MyContent>? {
   return c?.entries?.map {
     val contentType = it.key
     val m = it.value
-    val schema = MySchema.fromSchema(m.schema)
+    val schema = if(m.schema != null) {
+      MySchema.fromSchema(m.schema)
+    } else {
+      MySchema.EMPTY
+    }
     MyContent(
         contentType, schema, m.examples, m.example
     )

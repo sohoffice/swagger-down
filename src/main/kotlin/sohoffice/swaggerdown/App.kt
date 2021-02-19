@@ -115,6 +115,7 @@ fun main(args: Array<String>) {
   } catch (e: Exception) {
     println(e.message)
     println("")
+    e.printStackTrace()
     cli.usage(System.out)
   }
 }

@@ -97,6 +97,7 @@ Limitations
 
 - Swagger 3 only
 - Advanced swagger feature like oneOf, anyOf are not supported. We're looking to add them if requested.
+- Redundant empty lines are inserted into the markdown output.
 
 Pre-requisite
 -------------

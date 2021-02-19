@@ -22,6 +22,8 @@ data class MySchema(
       }
       return MySchema(s.description, s.example, items2)
     }
+
+    val EMPTY = MySchema(null, null, null)
   }
 }
 
