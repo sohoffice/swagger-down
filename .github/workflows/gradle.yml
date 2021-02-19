@@ -24,3 +24,9 @@ jobs:
       run: chmod +x gradlew
     - name: Build with Gradle
       run: ./gradlew build shadowJar
+
+    # Runs a single command using the runners shell
+    - name: Run a one-line script
+      run: |
+        ls -al &&
+        ls -al build/libs
