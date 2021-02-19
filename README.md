@@ -16,7 +16,7 @@ The output document is simplified, and is rendered in the following order:
 
 1. Info
 2. Server
-3. API flattened into `method path`
+3. API flattened into `method path` (ex: GET /foo/bar)
 
 Within the API endpoint, the sections are rendered as the below
 
@@ -24,7 +24,7 @@ Within the API endpoint, the sections are rendered as the below
 2. Description
 3. Parameters
 4. Request body
-5. Responses flattened into `status content-type`
+5. Responses flattened into `status content-type` (ex: 200 application/json)
 
 The schema is flattened into a table, with key represented in JSON path.
 
@@ -39,8 +39,22 @@ For example:
 | $.parameters[].value | string | Parameter value |
 ```
 
-Usage
------
+Pre-requisite
+-------------
+
+You need Java 1.8+ to run.
+
+Running
+-------
+
+Download the latest binary from [release](https://github.com/sohoffice/swagger-down/releases) and execute 
+with:
+
+```
+java -jar swagger-down-all.jar
+```
+
+### Usage help
 
 ```
 java -jar build/libs/swagger-down-all.jar --help
