@@ -87,6 +87,7 @@ class App {
 fun main(args: Array<String>) {
   val options = Options()
   val cli = CommandLine(options)
+  cli.isCaseInsensitiveEnumValuesAllowed = true
   cli.parseArgs(*args)
   if (options.helpRequested) {
     cli.usage(System.out)
@@ -98,13 +99,13 @@ fun main(args: Array<String>) {
     val api = app.parse(options.file ?: throw SdExitException(1, "Input file is mandatory"))
         ?: throw SdExitException(2, "Cannot parse API ${options.file}. Please make sure the path is valid and the content is OpenAPI v3")
     val data = app.prepare(api)
-    val s = app.merge(data, options.flavor)
+    val s = app.merge(data, options.flavor.name.toLowerCase())
 
     when (options.format) {
-      "html" -> {
+      Format.HTML -> {
         println(app.toHtml(s))
       }
-      "md" -> println(s)
+      Format.MD -> println(s)
     }
   } catch (e: SdExitException) {
     println(e.message)
