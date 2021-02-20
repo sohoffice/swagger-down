@@ -75,7 +75,8 @@ class App {
     val buffer = StringWriter()
     compiled.execute(buffer, data)
         .flush()
-    return buffer.toString()
+    // make sure the generated markdown ended with exactly 1 newline.
+    return buffer.toString().trim()+"\n"
   }
 
   fun toHtml(md: String): String {
@@ -106,7 +107,7 @@ fun main(args: Array<String>) {
       Format.HTML -> {
         println(app.toHtml(s))
       }
-      Format.MD -> println(s)
+      Format.MD -> print(s)
     }
   } catch (e: SdExitException) {
     println(e.message)

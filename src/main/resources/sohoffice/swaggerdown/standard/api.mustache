@@ -5,11 +5,11 @@
 
 {{op.summary}}
 
-{{#op.description}}### Description 
+{{#op.description}}### Description
 
 {{#trim}}{{op.description}}{{/trim}}
-
-{{/op.description}}{{#hasParameters}}### Parameters
+{{/op.description}}
+{{#hasParameters}}### Parameters
 
 | Name   | In  | Description |
 | ------ | --- | ----------- |
@@ -23,16 +23,12 @@
 {{#schema}}
 {{> schema}}
 {{/schema}}
+{{> jsonExample}}{{/requestBody}}
+{{#responses}}### Response: {{status}} {{contentType}}
 
-{{> jsonExample}}
-{{/requestBody}}
-{{#responses}}
-### Response: {{status}} {{contentType}}
-
-{{#trim}}{{description}}
-{{/trim}}
-{{#schema}}{{> schema}}
-{{/schema}}
-
-{{> jsonExample}}
+{{#description}}{{#trim}}{{description}}{{/trim}}
+{{/description}}
+{{#schema}}
+{{> schema}}
+{{/schema}}{{> jsonExample}}
 {{/responses}}
