@@ -38,10 +38,12 @@ class App {
 
   private val preparers = listOf<Pair<String, Preparer>>(
       "api" to SimplePreparer(),
+      "hasServers" to ServersPreparer(),
       "flatten" to ApiFlattenPreparer(),
       "singleLine" to NewlineToBrPreparer(),
       "trimString" to TrimPreparer(),
-      "dashRepeater" to RepeaterPreparer("-")
+      "dashRepeater" to RepeaterPreparer("-"),
+      "emptyCollectionChecker" to CheckEmptyCollectionPreparer()
   )
 
   fun parse(f: File): OpenAPI? {
@@ -76,7 +78,7 @@ class App {
     compiled.execute(buffer, data)
         .flush()
     // make sure the generated markdown ended with exactly 1 newline.
-    return buffer.toString().trim()+"\n"
+    return buffer.toString().trim() + "\n"
   }
 
   fun toHtml(md: String): String {

@@ -48,6 +48,7 @@ Get foo description
 | --- | ---- | ----------- |
 | $ | string | string 1 description |
 
+
 POST /foo
 ---------
 
