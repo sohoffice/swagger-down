@@ -3,11 +3,15 @@ package sohoffice.swaggerdown.data
 import com.fasterxml.jackson.databind.JsonNode
 import mapper
 
-interface JsonExampleExportable {
+interface ExampleExportable {
   val example: Any?
 
+  fun hasExample(): Boolean {
+    return example != null
+  }
+
   fun isHasJsonExample(): Boolean {
-    return example!=null && example is JsonNode
+    return example != null && example is JsonNode
   }
 
   fun getJsonExample(): String {

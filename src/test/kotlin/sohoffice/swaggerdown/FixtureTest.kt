@@ -16,9 +16,9 @@ import kotlin.test.assertEquals
  * Use the fixtures in src/test/resources/fixtures to test.
  *
  * Any file has the name `test_*.yml` will be considered as test fixture.
- * The expected result is named `test_*.md`
+ * The expected result is named `test_*_${flavor}.md`
  *
- * Basically the render will be executed and compare with the expected file.
+ * Basically the render will be executed and then compare with the expected file.
  */
 class FixtureTest {
 

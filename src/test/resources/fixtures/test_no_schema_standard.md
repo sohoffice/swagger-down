@@ -1,8 +1,8 @@
 # API Documentation
 
-Schema title
+No schema
 
-Single API description
+No schema description
 
 #### Info
 
@@ -35,31 +35,23 @@ Foo description
 
 ### Request Body: application/json
 
-##### Schema
-
-| Key | Type | Description |
-| --- | ---- | ----------- |
-| $ | string | string 1 description |
+Empty schema
 
 ##### Example
 
 ```
-foo example
+3.5
 ```
 
 ### Response: 200 application/json
 
-##### Schema
+Empty schema
 
-| Key | Type | Description |
-| --- | ---- | ----------- |
-| $.str | string |  |
-| $.arr[] | string | string 1 description |
+##### Example
 
-### Response: 400 application/json
-
-##### Schema
-
-| Key | Type | Description |
-| --- | ---- | ----------- |
-| $ | string | string 1 description |
+```
+{
+  "str" : "str1",
+  "arr" : [ "str2" ]
+}
+```

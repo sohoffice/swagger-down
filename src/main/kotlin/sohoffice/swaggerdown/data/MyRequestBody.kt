@@ -8,7 +8,7 @@ data class MyRequestBody(
     val schema: MySchema,
     val examples: Map<String?, Example?>? = null,
     override val example: Any? = null
-): JsonExampleExportable {
+): ExampleExportable {
   constructor(contentType: String, m: MediaType): this(contentType, MySchema.fromSchema(m.schema), m.examples, m.example)
 
   constructor(c: MyContent): this(c.contentType, c.schema, c.examples, c.example)

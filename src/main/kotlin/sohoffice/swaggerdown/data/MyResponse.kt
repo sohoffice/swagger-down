@@ -10,7 +10,7 @@ data class MyResponse(
     val schema: MySchema,
     val examples: Map<String?, Example?>? = null,
     override val example: Any? = null
-) : JsonExampleExportable {
+) : ExampleExportable {
   constructor(status: String, c: MyContent) : this(status, c.contentType, c.schema, c.examples, c.example)
 
   companion object {

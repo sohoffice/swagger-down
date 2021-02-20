@@ -7,7 +7,7 @@ data class MySchema(
     val description: String?,
     override val example: Any?,
     val items: List<MySchemaItem>?
-): JsonExampleExportable {
+): ExampleExportable {
   fun isNotEmpty(): Boolean {
     return items != null && items.isNotEmpty()
   }
