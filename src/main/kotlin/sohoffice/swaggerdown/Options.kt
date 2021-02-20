@@ -9,7 +9,9 @@ enum class Format {
 }
 
 enum class Flavor {
-    STANDARD
+    STANDARD;
+
+    val pathFragment = this.name.toLowerCase()
 }
 
 class Options {

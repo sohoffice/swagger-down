@@ -103,7 +103,7 @@ fun main(args: Array<String>) {
     val api = app.parse(options.file ?: throw SdExitException(1, "Input file is mandatory"))
         ?: throw SdExitException(2, "Cannot parse API ${options.file}. Please make sure the path is valid and the content is OpenAPI v3")
     val data = app.prepare(api)
-    val s = app.merge(data, options.flavor.name.toLowerCase())
+    val s = app.merge(data, options.flavor.pathFragment)
 
     when (options.format) {
       Format.HTML -> {

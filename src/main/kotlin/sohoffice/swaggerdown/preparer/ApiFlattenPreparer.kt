@@ -5,11 +5,15 @@ import io.swagger.v3.oas.models.PathItem
 import sohoffice.swaggerdown.data.OperationEntry
 
 class ApiFlattenPreparer : Preparer {
-  val extractors = listOf(
+  private val extractors = listOf(
       "GET" to PathItem::getGet,
       "POST" to PathItem::getPost,
       "DELETE" to PathItem::getDelete,
-      "PUT" to PathItem::getPut
+      "PUT" to PathItem::getPut,
+      "HEAD" to PathItem::getHead,
+      "OPTIONS" to PathItem::getOptions,
+      "PATCH" to PathItem::getPatch,
+      "TRACE" to PathItem::getTrace
   )
 
   override fun process(api: OpenAPI): List<OperationEntry> {
@@ -18,7 +22,7 @@ class ApiFlattenPreparer : Preparer {
         .toList()
   }
 
-  fun handlePathItem(ent: Map.Entry<String, PathItem>): Sequence<OperationEntry> {
+  private fun handlePathItem(ent: Map.Entry<String, PathItem>): Sequence<OperationEntry> {
     val path = ent.key
     val item = ent.value
     val all: List<OperationEntry> = extractors.map {
@@ -28,8 +32,7 @@ class ApiFlattenPreparer : Preparer {
       } else {
         OperationEntry(path, it.first, x)
       }
-    }.filter { it != null }
-        .map { it!! }
+    }.filterNotNull()
     return all.asSequence()
   }
 }

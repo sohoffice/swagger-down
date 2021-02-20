@@ -22,18 +22,27 @@ import kotlin.test.assertEquals
  */
 class FixtureTest {
 
-  @Test fun testFixture() {
-    val fixtures = getFixtures()
+  private val fixtures: List<Path>
 
+  init {
+    fixtures = getFixtures()
+  }
+
+  @Test
+  fun testStandard() {
+    testFixture(Flavor.STANDARD)
+  }
+
+  private fun testFixture(flavor: Flavor) {
     fixtures.forEach { fixture ->
       logger.info("Fixture: {}", fixture.toFile().name)
       val app = App()
       val parsed = app.parse(fixture.toFile()) ?: throw RuntimeException("fixture $fixture cannot be parsed")
       val dir = fixture.toFile().parentFile
-      val expectedFn = "${fixture.toFile().nameWithoutExtension}.md"
+      val expectedFn = "${fixture.toFile().nameWithoutExtension}_${flavor.pathFragment}.md"
       val expected = File(dir, expectedFn).readText()
       val data = app.prepare(parsed)
-      val result = app.merge(data, "standard")
+      val result = app.merge(data, flavor.pathFragment)
 
       assertEquals(expected, result)
       logger.info("         OK")
