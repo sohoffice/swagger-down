@@ -1,0 +1,97 @@
+openapi: 3.0.0
+info:
+  title: 2 paths title
+  version: "1.0"
+servers:
+  - url: http://foo
+    description: Foo server
+paths:
+  /global:
+    get:
+      tags:
+        - Tag1
+      summary: Use global auth
+      operationId: getGlobal
+      description: |
+        Use global auth description
+      parameters:
+        - $ref: '#/components/parameters/header1'
+      responses:
+        200:
+          description: Successful response
+          content:
+            application/json:
+              example: some thing
+  /api:
+    get:
+      tags:
+        - Tag1
+      summary: Use api auth only
+      operationId: getApi
+      description: |
+        Use api auth description
+      security:
+        - apiKeyAuth: []
+      parameters:
+        - $ref: '#/components/parameters/header1'
+      responses:
+        204:
+          description: Successful response
+components:
+  parameters:
+    header1:
+      in: header
+      name: Header-1
+      description: Header 1 description
+      required: true
+      schema:
+        type: string
+      example: header 1 example
+  schemas:
+    object1:
+      type: object
+      description: Object 1 description
+      properties:
+        str:
+          type: string
+        arr:
+          type: array
+          items:
+            $ref: '#/components/schemas/string1'
+    string1:
+      type: string
+      description: string 1 description
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: |
+        Http basic auth
+    apiKeyAuth:
+      type: apiKey
+      name: Foo-Api-Key
+      in: header
+      description: |
+        Foo api key auth
+    jwtAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: JWT bearer token
+    oauth2Auth:
+      type: oauth2
+      flows:
+        implicit:
+          authorizationUrl: https://example.com/api/oauth/dialog
+          scopes:
+            write:pets: write foo
+            read:pets: read foo
+      description: oauth2 implicit flow
+security:
+  - basicAuth: []
+    apiKeyAuth: []
+  - jwtAuth: []
+  - oauth2Auth:
+      - read:foo
+      - write:foo
+
