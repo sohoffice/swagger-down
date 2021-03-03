@@ -79,8 +79,6 @@ Use api auth description
 
 ### Security
 
-##### Option 1
-
 - Api Key: Header Foo-Api-Key
 
 | Type | Scheme | Name | In  | Description |
