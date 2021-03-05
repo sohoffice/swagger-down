@@ -9,6 +9,7 @@ import java.nio.file.Paths
 import java.nio.file.attribute.BasicFileAttributes
 import java.util.function.BiPredicate
 import kotlin.streams.toList
+import kotlin.test.Ignore
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
@@ -22,19 +23,19 @@ import kotlin.test.assertEquals
  */
 class FixtureTest {
 
-  private val fixtures: List<Path>
-
-  init {
-    fixtures = getFixtures()
+  @Test
+  fun testStandard() {
+    testFixture("fixtures", Flavor.STANDARD)
   }
 
   @Test
-  fun testStandard() {
-    testFixture(Flavor.STANDARD)
+  @Ignore
+  fun testExperimental() {
+    testFixture("experimental-fixtures", Flavor.STANDARD)
   }
 
-  private fun testFixture(flavor: Flavor) {
-    fixtures.forEach { fixture ->
+  private fun testFixture(base: String, flavor: Flavor) {
+    getFixtures(base).forEach { fixture ->
       logger.info("Fixture: {}", fixture.toFile().name)
       val app = App()
       val parsed = app.parse(fixture.toFile()) ?: throw RuntimeException("fixture $fixture cannot be parsed")
@@ -49,8 +50,8 @@ class FixtureTest {
     }
   }
 
-  private fun getFixtures(): List<Path> {
-    val res = this.javaClass.classLoader?.getResource("fixtures") ?: throw RuntimeException("fixtures not found")
+  private fun getFixtures(base: String): List<Path> {
+    val res = this.javaClass.classLoader?.getResource(base) ?: throw RuntimeException("fixtures not found")
     val dir = Paths.get(res.toURI())
     return Files.find(dir, 1, BiPredicate<Path, BasicFileAttributes> { path, attr ->
       val fn = path.fileName?.toString()

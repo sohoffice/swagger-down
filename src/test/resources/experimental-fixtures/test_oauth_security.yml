@@ -94,4 +94,7 @@ security:
   - basicAuth: []
     apiKeyAuth: []
   - jwtAuth: []
+  - oauth2Auth:
+      - read:foo
+      - write:foo
 

@@ -49,6 +49,15 @@ Use global auth description
 | ---- | ------ | ------------- | ----------- |
 | http | bearer | JWT | JWT bearer token |
 
+##### Option 3
+
+- Oauth2 implicit
+
+| Type | Flow | Authorization URL | Scope | Description |
+| ---- | ---- | ----------------- | ----- | ----------- |
+| oauth2 | implicit | https://example.com/api/oauth/dialog | write:pets | write foo |
+| | | | read:pets | read foo |
+
 ### Parameters
 
 | Name   | In  | Description |

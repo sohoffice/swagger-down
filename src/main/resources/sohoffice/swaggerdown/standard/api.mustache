@@ -10,6 +10,24 @@
 
 {{#trim}}{{op.description}}{{/trim}}
 {{/op.description}}
+{{#security}}
+### Security
+
+{{#options}}
+{{#havingManyOptions}}
+##### {{optionHeader}}
+
+{{/havingManyOptions}}
+{{#optionSchemes}}
+- {{schemeLabel}}
+
+|{{#values}} {{first}} |{{/values}}
+|{{#values}} {{#dashRepeater}}{{first}}{{/dashRepeater}} |{{/values}}
+|{{#values}} {{#trimString}}{{second}}{{/trimString}} |{{/values}}
+
+{{/optionSchemes}}
+{{/options}}
+{{/security}}
 {{#hasParameters}}### Parameters
 
 | Name   | In  | Description |
@@ -24,12 +42,16 @@
 {{#schema}}
 {{> schema}}
 {{/schema}}
-{{> example}}{{/requestBody}}
+{{#hasExample}}{{> example}}
+{{/hasExample}}
+{{/requestBody}}
 {{#responses}}### Response: {{status}} {{contentType}}
 
 {{#description}}{{#trim}}{{description}}{{/trim}}
 {{/description}}
 {{#schema}}
 {{> schema}}
-{{/schema}}{{> example}}
+{{/schema}}
+{{#hasExample}}{{> example}}
+{{/hasExample}}
 {{/responses}}

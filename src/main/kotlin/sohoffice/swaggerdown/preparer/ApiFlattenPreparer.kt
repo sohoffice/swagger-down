@@ -18,11 +18,11 @@ class ApiFlattenPreparer : Preparer {
 
   override fun process(api: OpenAPI): List<OperationEntry> {
     return api.paths.entries.asSequence()
-        .flatMap(this::handlePathItem)
+        .flatMap { handlePathItem(api, it) }
         .toList()
   }
 
-  private fun handlePathItem(ent: Map.Entry<String, PathItem>): Sequence<OperationEntry> {
+  private fun handlePathItem(api: OpenAPI, ent: Map.Entry<String, PathItem>): Sequence<OperationEntry> {
     val path = ent.key
     val item = ent.value
     val all: List<OperationEntry> = extractors.map {
@@ -30,7 +30,7 @@ class ApiFlattenPreparer : Preparer {
       if (x == null) {
         null
       } else {
-        OperationEntry(path, it.first, x)
+        OperationEntry(path, it.first, x, api)
       }
     }.filterNotNull()
     return all.asSequence()

@@ -1,15 +1,16 @@
 package sohoffice.swaggerdown.data
 
+import io.swagger.v3.oas.models.OpenAPI
 import io.swagger.v3.oas.models.Operation
 import io.swagger.v3.oas.models.parameters.Parameter
-import org.apache.commons.lang3.StringUtils
 import sohoffice.swaggerdown.SdSpecException
 import sohoffice.swaggerdown.preparer.flattenContent
 
 data class OperationEntry(
     val path: String,
     val method: String,
-    val op: Operation
+    val op: Operation,
+    private val api: OpenAPI
 ) {
 
   fun isHasParameters(): Boolean {
@@ -39,6 +40,32 @@ data class OperationEntry(
       } catch (e: SdSpecException) {
         throw SdSpecException("$method $path ${it.key}:${e.path}", "Error processing response")
       }
+    }
+  }
+
+  val security: MySecurityRequirements? = getSecurityRequirements()
+
+  private fun getSecurityRequirements(): MySecurityRequirements? {
+    val req = when {
+      op.security!=null -> op.security
+      api.security!=null -> api.security
+      else -> null
+    }
+    val all: List<MySecurityOptions>? = req?.map {
+      val schemes: List<MySecurityScheme> = it.entries.mapNotNull { x ->
+        val scheme = api.components.securitySchemes[x.key]
+        if (scheme == null) {
+          null
+        } else {
+          MySecurityScheme(x.key, scheme, x.value)
+        }
+      }
+      MySecurityOptions(schemes)
+    }
+    return if (all == null) {
+      null
+    } else {
+      MySecurityRequirements(all)
     }
   }
 

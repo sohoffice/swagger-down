@@ -12,6 +12,10 @@ java -jar swagger-down-all.jar foo.yml > foo.md
 swagger-down doesn't support swagger 2.0, there's a number of options supporting it.
 So we just decided not to re-invent the wheel.
 
+It is also more useful when processing YAML spec file. The application outputs markdown
+and it's a lot natural to write markdown in YAML than it is in JSON. The 2 are perfect match.
+However, JSON spec file is still supported, just the output may be less pretty.
+
 Output Document
 ---------------
 
@@ -22,15 +26,16 @@ Swagger UI preserves the common component section, but also show schema directly
 
 A markdown document is less interactive.
 
-If the reader has to jump back and forth to lookup schema definition, it will soon makes reading a very tedious thing to do.
-So a swagger-down generated document basically flattens all schema and make them available when they are needed.
+If the reader has to jump back and forth to lookup schema definition, it will soon makes reading experience less joyful.
+So a swagger-down generated document basically flattens all schema and make them available where they are needed.
 For example: if the schema is referenced in request body, the details will be added right in the relevant section.
 The same rule applies to responses.
 
 Also, the swagger spec groups different methods under the same path. This makes perfect sense with Swagger UI,
 but also make the markdown document more verbose and creates more hierarchy.
-As a result, all APIs are flattened into a list, but placed next to each other to make reading more smoothly.
-This rules also applies to different request content types or different response status code + content types.
+As a result, all APIs are flattened into a list, but those with the same path are placed next to each other to make 
+reading experience more smoothly. This also applies to different request content types or different response status 
+code + content types.
 
 #### JSON schema
 
@@ -55,16 +60,14 @@ Take this JSON for example:
 
 The schema will be documented in below format.
 
-```
 | Key | Type | Description |
 | --- | ---- | ----------- |
 | $.code | string | Error code |
 | $.message | string | Human readable error message |
 | $.parameters[].name | string | Parameter name |
 | $.parameters[].value | string | Parameter value |
-```
 
-We hope the tabular display help to epress the schema element in a clearer way.
+We hope the tabular display helps to express the schema element in a more organized manner.
 
 #### Document organization
 
@@ -92,12 +95,12 @@ The HTML is unstyled and is more suitable when any of the following is true
 - You have HTML markup in your spec file. You'll need to style the output yourself.
 - You have a way to style your HTML. For example, it can be pasted into Confluence wiki.
 
-Limitations
------------
+Known Limitations
+-----------------
 
 - Swagger 3 only
 - Advanced swagger feature like oneOf, anyOf are not supported. We're looking to add them if requested.
-- Redundant empty lines are inserted into the markdown output.
+- Oauth, open ID security structures are not supported
 
 Pre-requisite
 -------------
@@ -111,7 +114,7 @@ Download the latest binary from [release](https://github.com/sohoffice/swagger-d
 and execute in command prompt with:
 
 ```
-java -jar swagger-down-all.jar
+java -jar swagger-down-all.jar [options] <spec_filename>
 ```
 
 The downloaded jar is a `fat jar`, it can be executed without further dependencies.
