@@ -102,7 +102,7 @@ Known Limitations
 
 - Swagger 3 only
 - Advanced swagger feature like oneOf, anyOf are not supported. We're looking to add them if requested.
-- Oauth, open ID security structures are not supported
+- Open ID security structures are not supported
 
 Pre-requisite
 -------------
