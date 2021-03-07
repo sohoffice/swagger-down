@@ -19,6 +19,8 @@ However, JSON spec file is still supported, just the output may be less pretty.
 Output Document
 ---------------
 
+Petstore example: https://github.com/sohoffice/swagger-down/blob/master/src/test/resources/petstore.md
+
 The basic idea around the design of generated document is `flatten`.
 
 Swagger spec promotes re-usability, so the schema can be defined as a component and referenced when necessary.
