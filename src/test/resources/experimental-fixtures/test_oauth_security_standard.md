@@ -16,53 +16,23 @@ Security title
 | Foo server | http://foo |
 
 
-GET /global
------------
+GET /oauth/implicit
+-------------------
 
-Use global auth
+oauth implicit summary
 
 ### Description
 
-Use global auth description
+oauth implicit description
 
 ### Security
 
-##### Option 1
-
-- Http Basic
-
-| Type | Scheme | Description |
-| ---- | ------ | ----------- |
-| http | basic | Http basic auth |
-
-- Api Key: Header Foo-Api-Key
-
-| Type | Name | In  | Description |
-| ---- | ---- | --- | ----------- |
-| apiKey | Foo-Api-Key | header | Foo api key auth |
-
-##### Option 2
-
-- Http JWT Bearer
-
-| Type | Scheme | Bearer Format | Description |
-| ---- | ------ | ------------- | ----------- |
-| http | bearer | JWT | JWT bearer token |
-
-##### Option 3
-
-- Oauth2 implicit
+- OAuth2 Implicit
 
 | Type | Flow | Authorization URL | Scope | Description |
 | ---- | ---- | ----------------- | ----- | ----------- |
-| oauth2 | implicit | https://example.com/api/oauth/dialog | write:pets | write foo |
-| | | | read:pets | read foo |
-
-### Parameters
-
-| Name   | In  | Description |
-| ------ | --- | ----------- |
-| Header-1 | header | Header 1 description |
+| OAUTH2 | Implicit | https://example.com/api/oauth/dialog | write:pets | write pets |
+|  |  |  | read:pets | read pets |
 
 ### Response: 200 application/json
 
@@ -75,28 +45,59 @@ some thing
 ```
 
 
-GET /api
---------
+GET /oauth/authorizationCode
+----------------------------
 
-Use api auth only
+oauth authorization code summary
 
 ### Description
 
-Use api auth description
+oauth authorization code description
 
 ### Security
 
-- Api Key: Header Foo-Api-Key
+- OAuth2 Authorization Code
 
-| Type | Name | In  | Description |
-| ---- | ---- | --- | ----------- |
-| apiKey | Foo-Api-Key | header | Foo api key auth |
+| Type | Flow | Authorization URL | Token URL | Scope | Description |
+| ---- | ---- | ----------------- | --------- | ----- | ----------- |
+| OAUTH2 | Authorization Code | https://example.com/api/oauth/dialog | https://example.com/api/oauth/token | write:pets | write pets |
+|  |  |  |  | read:pets | read pets |
 
-### Parameters
+### Response: 200 application/json
 
-| Name   | In  | Description |
-| ------ | --- | ----------- |
-| Header-1 | header | Header 1 description |
+Empty schema
+
+##### Example
+
+```
+got it
+```
+
+
+GET /oauth/authorizationCodeImplicit
+------------------------------------
+
+oauth authorization code implicit summary
+
+### Description
+
+oauth authorization code implicit description
+
+### Security
+
+- OAuth2 Implicit
+
+| Type | Flow | Authorization URL | Scope | Description |
+| ---- | ---- | ----------------- | ----- | ----------- |
+| OAUTH2 | Implicit | https://example.com/api/oauth/dialog | write:pets | write pets |
+|  |  |  | read:pets | read pets |
+
+- OAuth2 Authorization Code
+
+| Type | Flow | Authorization URL | Token URL | Scope | Description |
+| ---- | ---- | ----------------- | --------- | ----- | ----------- |
+| OAUTH2 | Authorization Code | https://example.com/api/oauth/dialog | https://example.com/api/oauth/token | write:pets | write pets |
+|  |  |  |  | read:pets | read pets |
 
 ### Response: 200 application/json
 

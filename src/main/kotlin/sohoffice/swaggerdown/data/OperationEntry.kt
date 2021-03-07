@@ -52,12 +52,12 @@ data class OperationEntry(
       else -> null
     }
     val all: List<MySecurityOptions>? = req?.map {
-      val schemes: List<MySecurityScheme> = it.entries.mapNotNull { x ->
+      val schemes: List<MySecuritySchemeImpl> = it.entries.mapNotNull { x ->
         val scheme = api.components.securitySchemes[x.key]
         if (scheme == null) {
           null
         } else {
-          MySecurityScheme(x.key, scheme, x.value)
+          MySecuritySchemeImpl(x.key, scheme, x.value)
         }
       }
       MySecurityOptions(schemes)

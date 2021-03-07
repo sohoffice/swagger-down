@@ -29,7 +29,7 @@ class FixtureTest {
   }
 
   @Test
-  @Ignore
+  // @Ignore
   fun testExperimental() {
     testFixture("experimental-fixtures", Flavor.STANDARD)
   }

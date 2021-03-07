@@ -6,34 +6,54 @@ servers:
   - url: http://foo
     description: Foo server
 paths:
-  /global:
+  /oauth/implicit:
     get:
       tags:
         - Tag1
-      summary: Use global auth
-      operationId: getGlobal
+      summary: oauth implicit summary
+      operationId: oauthImplicit
       description: |
-        Use global auth description
-      parameters:
-        - $ref: '#/components/parameters/header1'
+        oauth implicit description
+      security:
+        - oauth2Implicit:
+            - read:petss
+            - write:pets
       responses:
         200:
           description: Successful response
           content:
             application/json:
               example: some thing
-  /api:
+  /oauth/authorizationCode:
     get:
       tags:
         - Tag1
-      summary: Use api auth only
-      operationId: getApi
+      summary: oauth authorization code summary
+      operationId: oauthAuthorizationCode
       description: |
-        Use api auth description
+        oauth authorization code description
       security:
-        - apiKeyAuth: []
-      parameters:
-        - $ref: '#/components/parameters/header1'
+        - oauth2AuthCode:
+            - read:petss
+            - write:pets
+      responses:
+        200:
+          description: Successful response
+          content:
+            application/json:
+              example: got it
+  /oauth/authorizationCodeImplicit:
+    get:
+      tags:
+        - Tag1
+      summary: oauth authorization code implicit summary
+      operationId: oauthAuthorizationCodeImplicit
+      description: |
+        oauth authorization code implicit description
+      security:
+        - oauth2AuthCodeImplicit:
+            - read:petss
+            - write:pets
       responses:
         200:
           description: Successful response
@@ -81,20 +101,34 @@ components:
       scheme: bearer
       bearerFormat: JWT
       description: JWT bearer token
-    oauth2Auth:
+    oauth2Implicit:
       type: oauth2
       flows:
         implicit:
           authorizationUrl: https://example.com/api/oauth/dialog
           scopes:
-            write:pets: write foo
-            read:pets: read foo
-      description: oauth2 implicit flow
-security:
-  - basicAuth: []
-    apiKeyAuth: []
-  - jwtAuth: []
-  - oauth2Auth:
-      - read:foo
-      - write:foo
-
+            write:pets: write pets
+            read:pets: read pets
+    oauth2AuthCode:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://example.com/api/oauth/dialog
+          tokenUrl: https://example.com/api/oauth/token
+          scopes:
+            write:pets: write pets
+            read:pets: read pets
+    oauth2AuthCodeImplicit:
+      type: oauth2
+      flows:
+        implicit:
+          authorizationUrl: https://example.com/api/oauth/dialog
+          scopes:
+            write:pets: write pets
+            read:pets: read pets
+        authorizationCode:
+          authorizationUrl: https://example.com/api/oauth/dialog
+          tokenUrl: https://example.com/api/oauth/token
+          scopes:
+            write:pets: write pets
+            read:pets: read pets

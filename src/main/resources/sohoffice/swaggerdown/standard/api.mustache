@@ -21,10 +21,14 @@
 {{#optionSchemes}}
 - {{schemeLabel}}
 
-|{{#values}} {{first}} |{{/values}}
-|{{#values}} {{#dashRepeater}}{{first}}{{/dashRepeater}} |{{/values}}
-|{{#values}} {{#trimString}}{{second}}{{/trimString}} |{{/values}}
+{{#renderer}}
+|{{#headers}} {{.}} |{{/headers}}
+|{{#headers}} {{#dashRepeater}}{{.}}{{/dashRepeater}} |{{/headers}}
+{{#values}}
+|{{#.}} {{#trimString}}{{.}}{{/trimString}} |{{/.}}
+{{/values}}
 
+{{/renderer}}
 {{/optionSchemes}}
 {{/options}}
 {{/security}}
@@ -34,8 +38,8 @@
 | ------ | --- | ----------- |
 {{#parameters}}| {{name}} | {{in}} | {{#singleLine}}{{description}}{{/singleLine}} |
 {{/parameters}}
-{{/hasParameters}}
 
+{{/hasParameters}}
 {{#requestBody}}
 ### Request Body: {{contentType}}
 
