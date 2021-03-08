@@ -36,6 +36,8 @@ oauth implicit description
 
 ### Response: 200 application/json
 
+Successful response
+
 Empty schema
 
 ##### Example
@@ -64,6 +66,8 @@ oauth authorization code description
 |  |  |  |  | read:pets | read pets |
 
 ### Response: 200 application/json
+
+Successful response
 
 Empty schema
 
@@ -100,6 +104,8 @@ oauth authorization code implicit description
 |  |  |  |  | read:pets | read pets |
 
 ### Response: 200 application/json
+
+Successful response
 
 Empty schema
 

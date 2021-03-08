@@ -45,6 +45,8 @@ Empty schema
 
 ### Response: 200 application/json
 
+Successful response
+
 Empty schema
 
 ##### Example

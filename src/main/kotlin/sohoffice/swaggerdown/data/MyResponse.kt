@@ -8,16 +8,17 @@ data class MyResponse(
     val status: String,
     val contentType: String,
     val schema: MySchema,
+    val description: String? = null,
     val examples: Map<String?, Example?>? = null,
     override val example: Any? = null
 ) : ExampleExportable {
-  constructor(status: String, c: MyContent) : this(status, c.contentType, c.schema, c.examples, c.example)
+  constructor(status: String, description: String?, c: MyContent) : this(status, c.contentType, c.schema, description, c.examples, c.example)
 
   companion object {
     fun fromApiResponse(status: String, r: ApiResponse): List<MyResponse> {
       val contents = flattenContent(r.content)
       return contents?.map {
-        MyResponse(status, it)
+        MyResponse(status, r.description,  it)
       } ?: emptyList()
     }
   }

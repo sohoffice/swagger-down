@@ -57,6 +57,8 @@ Use global auth description
 
 ### Response: 200 application/json
 
+Successful response
+
 Empty schema
 
 ##### Example
@@ -90,6 +92,8 @@ Use api auth description
 | Header-1 | header | Header 1 description |
 
 ### Response: 200 application/json
+
+Successful response
 
 Empty schema
 

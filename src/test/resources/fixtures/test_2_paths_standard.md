@@ -33,6 +33,8 @@ Get foo description
 
 ### Response: 200 application/json
 
+Successful response
+
 ##### Schema
 
 | Key | Type | Description |
@@ -41,6 +43,8 @@ Get foo description
 | $.arr[] | string | string 1 description |
 
 ### Response: 400 application/json
+
+bad request
 
 ##### Schema
 
@@ -74,6 +78,8 @@ Post bar description
 
 ### Response: 200 application/json
 
+Successful response
+
 ##### Schema
 
 | Key | Type | Description |
@@ -82,6 +88,8 @@ Post bar description
 | $.arr[] | string | string 1 description |
 
 ### Response: 400 application/json
+
+bad request
 
 ##### Schema
 

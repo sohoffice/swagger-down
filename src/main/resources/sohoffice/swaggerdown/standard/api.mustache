@@ -51,7 +51,8 @@
 {{/requestBody}}
 {{#responses}}### Response: {{status}} {{contentType}}
 
-{{#description}}{{#trim}}{{description}}{{/trim}}
+{{#description}}{{#trimString}}{{description}}{{/trimString}}
+
 {{/description}}
 {{#schema}}
 {{> schema}}

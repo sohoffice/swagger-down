@@ -50,6 +50,8 @@ foo example
 
 ### Response: 200 application/json
 
+Successful response
+
 ##### Schema
 
 | Key | Type | Description |
@@ -58,6 +60,8 @@ foo example
 | $.arr[] | string | string 1 description |
 
 ### Response: 400 application/json
+
+bad request
 
 ##### Schema
 
