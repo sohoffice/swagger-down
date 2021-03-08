@@ -38,7 +38,7 @@ class App {
 
   private val preparers = listOf<Pair<String, Preparer>>(
       "api" to SimplePreparer(),
-      "hasServers" to ServersPreparer(),
+      "myServers" to ServersPreparer(),
       "flatten" to ApiFlattenPreparer(),
       "singleLine" to NewlineToBrPreparer(),
       "trimString" to TrimPreparer(),

@@ -16,7 +16,7 @@
 {{/contact}}{{#license}}| License | {{name}} {{url}} |
 {{/license}}{{#version}}| Version | {{version}} |
 {{/version}}{{/api.info}}
-{{#hasServers}}
+{{#myServers.hasAny}}
 
 
 #### Servers
@@ -26,4 +26,4 @@
 {{#api.servers}}
 | {{description}} | {{url}} |
 {{/api.servers}}
-{{/hasServers}}
+{{/myServers.hasAny}}

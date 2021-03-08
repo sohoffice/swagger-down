@@ -16,6 +16,7 @@ Single API description
 | Description | URL |
 | ----------- | --- |
 | Foo server | http://foo |
+| Bar server | http://bar |
 
 
 GET /foo
