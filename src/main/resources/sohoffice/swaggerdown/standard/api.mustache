@@ -1,11 +1,11 @@
 
 {{method}} {{path}}
-{{#dashRepeater}}
-{{method}} {{path}}{{/dashRepeater}}
+{{#dashRepeater}}{{method}} {{path}}{{/dashRepeater}}
 
+{{#op.summary}}
+{{.}}
 
-{{op.summary}}
-
+{{/op.summary}}
 {{#op.description}}### Description
 
 {{#trim}}{{op.description}}{{/trim}}
