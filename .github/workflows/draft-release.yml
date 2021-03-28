@@ -47,6 +47,7 @@ jobs:
       with:
         message: |
           Generate sample with ${{ steps.get_version.outputs.SOURCE_TAG }}
+        branch: master
         add: 'petstore.md --force'
         cwd: './src/test/resources/'
 
