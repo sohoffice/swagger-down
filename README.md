@@ -104,6 +104,11 @@ Known Limitations
 - Advanced swagger feature like oneOf, anyOf are not supported. We're looking to add them if requested.
 - Open ID security structures are not supported
 
+Maintenance
+-----------
+
+See [DEV.md](DEV.md) for reference
+
 Pre-requisite
 -------------
 
