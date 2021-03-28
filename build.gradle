@@ -52,3 +52,27 @@ application {
     // Define the main class for the application.
     mainClassName = 'sohoffice.swaggerdown.AppKt'
 }
+
+task sample() {
+  description "Generate petstore sample"
+  dependsOn ["shadowJar"]
+
+  doLast {
+    println "Delete petstore sample"
+    File f = new File("${projectDir}/src/test/resources/petstore.md")
+    f.delete()
+
+    println description
+    new ByteArrayOutputStream().withStream { os ->
+      exec {
+        executable "java"
+        args "-jar", "build/libs/swagger-down-all.jar", "src/test/resources/petstore.json"
+        standardOutput = os
+      }
+
+      new FileOutputStream(f).withStream { fout ->
+        fout.write(os.toByteArray())
+      }
+    }
+  }
+}
