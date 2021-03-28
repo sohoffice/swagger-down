@@ -45,7 +45,8 @@ jobs:
 
     - uses: EndBug/add-and-commit@v7
       with:
-        message: 'Generate sample with ${{SOURCE_TAG}}'
+        message: |
+          Generate sample with ${{ steps.get_version.outputs.SOURCE_TAG }}
         add: '*.txt --force'
         cwd: './pathToRepo/'
 
@@ -56,9 +57,9 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
       with:
         tag_name: ${{ github.ref }}
-        release_name: Release ${{ SOURCE_TAG }}
+        release_name: Release ${{ steps.get_version.outputs.SOURCE_TAG }}
         body: |
-          Releasing ${{ SOURCE_TAG }}
+          Releasing ${{ steps.get_version.outputs.SOURCE_TAG }}
         draft: true
         prerelease: false
 
