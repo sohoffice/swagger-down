@@ -47,8 +47,8 @@ jobs:
       with:
         message: |
           Generate sample with ${{ steps.get_version.outputs.SOURCE_TAG }}
-        add: '*.txt --force'
-        cwd: './pathToRepo/'
+        add: 'petstore.md --force'
+        cwd: './src/test/resources/'
 
     - name: Create Release
       id: create_release
