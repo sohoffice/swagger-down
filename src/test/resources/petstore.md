@@ -40,6 +40,8 @@ Empty schema
 
 ### Response: 200 application/json
 
+successful operation
+
 Empty schema
 
 
@@ -114,9 +116,13 @@ Multiple status values can be provided with comma separated strings
 
 ### Response: 200 application/json
 
+successful operation
+
 Empty schema
 
 ### Response: 200 application/xml
+
+successful operation
 
 Empty schema
 
@@ -146,9 +152,13 @@ Multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3
 
 ### Response: 200 application/json
 
+successful operation
+
 Empty schema
 
 ### Response: 200 application/xml
+
+successful operation
 
 Empty schema
 
@@ -177,9 +187,13 @@ Returns a single pet
 
 ### Response: 200 application/json
 
+successful operation
+
 Empty schema
 
 ### Response: 200 application/xml
+
+successful operation
 
 Empty schema
 
@@ -242,9 +256,13 @@ Empty schema
 
 ### Response: 200 application/json
 
+successful operation
+
 Empty schema
 
 ### Response: 200 application/xml
+
+successful operation
 
 Empty schema
 
@@ -265,9 +283,13 @@ For valid response try integer IDs with value >= 1 and <= 10. Other values will 
 
 ### Response: 200 application/json
 
+successful operation
+
 Empty schema
 
 ### Response: 200 application/xml
+
+successful operation
 
 Empty schema
 
@@ -305,6 +327,8 @@ Returns a map of status codes to quantities
 
 ### Response: 200 application/json
 
+successful operation
+
 Empty schema
 
 
@@ -341,9 +365,13 @@ Get user by user name
 
 ### Response: 200 application/json
 
+successful operation
+
 Empty schema
 
 ### Response: 200 application/xml
+
+successful operation
 
 Empty schema
 
@@ -396,6 +424,8 @@ Logs user into the system
 
 ### Response: 200 application/json
 
+successful operation
+
 ##### Schema
 
 | Key | Type | Description |
@@ -403,6 +433,8 @@ Logs user into the system
 | $ | string |  |
 
 ### Response: 200 application/xml
+
+successful operation
 
 ##### Schema
 
