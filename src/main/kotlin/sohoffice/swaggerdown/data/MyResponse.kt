@@ -6,8 +6,8 @@ import sohoffice.swaggerdown.preparer.flattenContent
 
 data class MyResponse(
     val status: String,
-    val contentType: String,
-    val schema: MySchema,
+    val contentType: String?,
+    val schema: MySchema?,
     val description: String? = null,
     val examples: Map<String?, Example?>? = null,
     override val example: Any? = null
@@ -17,9 +17,13 @@ data class MyResponse(
   companion object {
     fun fromApiResponse(status: String, r: ApiResponse): List<MyResponse> {
       val contents = flattenContent(r.content)
-      return contents?.map {
-        MyResponse(status, r.description,  it)
-      } ?: emptyList()
+      return if (contents == null) {
+        listOf(MyResponse(status, null, null, r.description))
+      } else {
+        contents.map {
+          MyResponse(status, r.description,  it)
+        }
+      }
     }
   }
 }

@@ -49,7 +49,7 @@
 {{#hasExample}}{{> example}}
 {{/hasExample}}
 {{/requestBody}}
-{{#responses}}### Response: {{status}} {{contentType}}
+{{#responses}}### Response: {{status}}{{#contentType}} {{.}}{{/contentType}}
 
 {{#description}}{{#trimString}}{{description}}{{/trimString}}
 
